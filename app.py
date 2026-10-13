@@ -14,7 +14,7 @@ except ImportError:
 
 
 # =====================================================
-# 1. PAGE CONFIGURATION
+# PAGE CONFIGURATION
 # =====================================================
 
 st.set_page_config(
@@ -26,17 +26,19 @@ st.set_page_config(
 
 
 # =====================================================
-# 2. CUSTOM CSS - READABLE COLORS
+# CSS DESIGN - FIXED TEXT COLORS
 # =====================================================
 
 st.markdown("""
 <style>
+
+/* Main page background */
 .stApp {
     background: linear-gradient(135deg, #f5f7fb, #e8eef5);
-    color: #111827;
+    color: #111827 !important;
 }
 
-/* Main headings */
+/* Main page headings */
 .stApp h1,
 .stApp h2,
 .stApp h3,
@@ -54,28 +56,154 @@ st.markdown("""
     color: #111827 !important;
 }
 
-/* Top banner */
-.hero {
+/* Header banner */
+.stApp .hero {
     padding: 28px;
     border-radius: 18px;
     background: linear-gradient(120deg, #10243a, #245b78);
-    color: white;
     margin-bottom: 24px;
 }
 
-.hero h1 {
-    color: white !important;
+.stApp .hero h1 {
+    color: #ffffff !important;
+    margin: 0;
     font-size: 2.2rem;
-    margin-bottom: 10px;
 }
 
-.hero p {
-    color: #e0edf5 !important;
+.stApp .hero p {
+    color: #ffffff !important;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #ffffff !important;
+}
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3,
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
+    color: #111827 !important;
+}
+
+/* Sidebar text input */
+section[data-testid="stSidebar"] input {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+/* Sidebar dropdown */
+section[data-testid="stSidebar"] [data-baseweb="select"] > div {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+section[data-testid="stSidebar"] [data-baseweb="select"] *,
+section[data-testid="stSidebar"] [data-baseweb="select"] input {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+}
+
+/* Dropdown options */
+div[data-baseweb="popover"],
+div[data-baseweb="menu"],
+div[role="listbox"],
+div[role="option"] {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+}
+
+div[role="option"] *,
+div[role="listbox"] * {
+    color: #111827 !important;
+}
+
+/* Main-page text inputs */
+.stTextInput input,
+.stTextArea textarea {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+    border: 1px solid #cbd5e1 !important;
+}
+
+/* All standard buttons */
+.stButton > button {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    min-height: 2.8rem;
+    font-weight: 600 !important;
+}
+
+/* Force button labels to be visible */
+.stButton > button p,
+.stButton > button span,
+.stButton > button div {
+    color: #111827 !important;
+    -webkit-text-fill-color: #111827 !important;
+}
+
+/* Button hover */
+.stButton > button:hover {
+    background-color: #dbeafe !important;
+    border-color: #2563eb !important;
+}
+
+/* Primary fetch button */
+.stButton > button[kind="primary"] {
+    background-color: #174ea6 !important;
+    border-color: #174ea6 !important;
+}
+
+.stButton > button[kind="primary"] *,
+.stButton > button[kind="primary"] p,
+.stButton > button[kind="primary"] span,
+.stButton > button[kind="primary"] div {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Website and Google Maps link buttons */
+.stLinkButton a {
+    background-color: #174ea6 !important;
+    color: #ffffff !important;
+    border: 1px solid #174ea6 !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+}
+
+.stLinkButton a *,
+.stLinkButton a span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Download button */
+.stDownloadButton > button {
+    background-color: #174ea6 !important;
+    color: #ffffff !important;
+    border: 1px solid #174ea6 !important;
+    border-radius: 10px !important;
+}
+
+.stDownloadButton > button *,
+.stDownloadButton > button span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 
 /* Metric cards */
 div[data-testid="stMetric"] {
-    background: white;
+    background-color: #ffffff !important;
     padding: 16px;
     border-radius: 14px;
     border: 1px solid #d7e0ea;
@@ -88,83 +216,27 @@ div[data-testid="stMetricValue"] * {
     color: #111827 !important;
 }
 
-/* Sidebar */
-section[data-testid="stSidebar"] {
-    background-color: #ffffff;
-}
-
-section[data-testid="stSidebar"] * {
-    color: #111827;
-}
-
-/* Input fields */
-.stTextInput input,
-.stTextArea textarea,
-div[data-baseweb="select"] * {
-    color: #111827 !important;
-}
-
-/* All normal buttons */
-.stButton > button {
+/* Data table */
+div[data-testid="stDataFrame"] {
     background-color: #ffffff !important;
-    color: #111827 !important;
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 10px !important;
-    min-height: 2.8rem;
-    font-weight: 600 !important;
 }
 
-/* Force button label visibility */
-.stButton > button p,
-.stButton > button span,
-.stButton > button div {
-    color: #111827 !important;
-}
-
-/* Hover effect */
-.stButton > button:hover {
-    background-color: #dbeafe !important;
-    border-color: #2563eb !important;
-}
-
-/* Primary action button */
-.stButton > button[kind="primary"] {
-    background-color: #174ea6 !important;
-    color: #ffffff !important;
-}
-
-.stButton > button[kind="primary"] p,
-.stButton > button[kind="primary"] span,
-.stButton > button[kind="primary"] div {
-    color: #ffffff !important;
-}
-
-/* Links */
+/* Regular links */
 .stApp a {
     color: #0969da !important;
 }
 
-/* Link buttons */
-.stLinkButton a {
-    border-radius: 9px !important;
-    font-weight: 600 !important;
+/* Alerts */
+div[data-testid="stAlert"] p {
+    color: #111827 !important;
 }
 
-/* Dataframe */
-div[data-testid="stDataFrame"] {
-    background-color: white;
-}
-
-/* Information containers */
-div[data-testid="stAlert"] {
-    border-radius: 10px;
-}
 </style>
 """, unsafe_allow_html=True)
 
 
 # =====================================================
-# 3. HEADER
+# HEADER
 # =====================================================
 
 st.markdown("""
@@ -179,7 +251,7 @@ st.markdown("""
 
 
 # =====================================================
-# 4. CONFIGURATION
+# SETTINGS
 # =====================================================
 
 HEADERS = {
@@ -195,7 +267,7 @@ MAX_PDF_BYTES = 12 * 1024 * 1024
 
 
 # =====================================================
-# 5. HELPER FUNCTIONS
+# HELPER FUNCTIONS
 # =====================================================
 
 def normalize(value):
@@ -256,33 +328,18 @@ def valid_url(url):
         return False
 
 
-def is_google_maps_url(url):
-    if not valid_url(url):
-        return False
-
-    domain = urlparse(url).netloc.lower()
-
-    return (
-        domain.endswith("google.com")
-        or domain.endswith("google.co.in")
-        or domain == "maps.app.goo.gl"
-        or domain.endswith("goo.gl")
-    ) and (
-        "maps" in url.lower()
-        or "goo.gl" in domain
-    )
-
-
 # =====================================================
-# 6. GOOGLE MAPS LINK FIX
+# GOOGLE MAPS - CORRECT LINK HANDLING
 # =====================================================
 
 def google_maps_url(college_name, address=""):
     """
-    Always create a genuine Google Maps search URL.
-    This prevents placeholder text from opening Streamlit itself.
+    Generate a real Google Maps search URL.
     """
-    query = clean_text(f"{college_name} {address}")
+
+    query = clean_text(
+        f"{college_name} {address}"
+    )
 
     return (
         "https://www.google.com/maps/search/?api=1&query="
@@ -290,21 +347,43 @@ def google_maps_url(college_name, address=""):
     )
 
 
+def is_google_maps_url(url):
+    if not valid_url(url):
+        return False
+
+    parsed = urlparse(url)
+    domain = parsed.netloc.lower()
+
+    return (
+        domain.endswith("google.com")
+        or domain.endswith("google.co.in")
+        or domain == "maps.app.goo.gl"
+        or domain == "goo.gl"
+    ) and (
+        "maps" in url.lower()
+        or domain in ("maps.app.goo.gl", "goo.gl")
+    )
+
+
 def get_maps_url(row, maps_col, college_name, address):
     """
-    Use the Excel Maps URL only when it is a genuine Maps link.
-    Ignore text such as 'Open in Google Maps'.
+    Use the Excel link only if it is a real Google Maps URL.
+    Ignore placeholder text such as 'Open in Google Maps'.
     """
+
     excel_url = cell(row, maps_col)
 
     if is_google_maps_url(excel_url):
         return excel_url
 
-    return google_maps_url(college_name, address)
+    return google_maps_url(
+        college_name,
+        address
+    )
 
 
 # =====================================================
-# 7. WEBSITE READER
+# WEBSITE READER
 # =====================================================
 
 def safe_get(url):
@@ -325,15 +404,19 @@ def safe_get(url):
 
 def same_domain(base_url, link):
     try:
-        base_domain = (
-            urlparse(base_url).netloc.lower().replace("www.", "")
+        base = (
+            urlparse(base_url)
+            .netloc.lower()
+            .replace("www.", "")
         )
 
-        link_domain = (
-            urlparse(link).netloc.lower().replace("www.", "")
+        target = (
+            urlparse(link)
+            .netloc.lower()
+            .replace("www.", "")
         )
 
-        return base_domain == link_domain
+        return base == target
 
     except Exception:
         return False
@@ -349,20 +432,20 @@ def fetch_page_text(url):
         "Content-Type", ""
     ).lower()
 
-    # Read PDF documents
+    # PDF extraction
     if "pdf" in content_type or url.lower().endswith(".pdf"):
 
         if pdfplumber is None:
             return (
                 response.url,
-                "Install pdfplumber to extract PDF text.",
+                "PDF found. Install pdfplumber to read it.",
                 []
             )
 
         if len(response.content) > MAX_PDF_BYTES:
             return (
                 response.url,
-                "PDF is larger than the 12 MB limit.",
+                "PDF exceeds the 12 MB limit.",
                 []
             )
 
@@ -387,7 +470,7 @@ def fetch_page_text(url):
         except Exception:
             return response.url, "", []
 
-    # Read HTML pages
+    # HTML extraction
     soup = BeautifulSoup(
         response.text,
         "html.parser"
@@ -396,6 +479,7 @@ def fetch_page_text(url):
     links = []
 
     for anchor in soup.find_all("a", href=True):
+
         link = urljoin(
             response.url,
             anchor["href"].strip()
@@ -409,20 +493,25 @@ def fetch_page_text(url):
             links.append((label, link))
 
     for tag in soup([
-        "script", "style", "nav",
-        "footer", "header", "noscript", "svg"
+        "script",
+        "style",
+        "nav",
+        "footer",
+        "header",
+        "noscript",
+        "svg"
     ]):
         tag.decompose()
 
-    text = clean_text(
+    page_text = clean_text(
         soup.get_text(" ", strip=True)
     )
 
-    return response.url, text, links
+    return response.url, page_text, links
 
 
 # =====================================================
-# 8. TOPIC KEYWORDS
+# INFORMATION TOPICS
 # =====================================================
 
 TOPIC_KEYWORDS = {
@@ -433,33 +522,33 @@ TOPIC_KEYWORDS = {
 
     "Departments": [
         "department", "academics", "courses",
-        "programmes", "programs", "branches"
+        "programmes", "programs", "branch"
     ],
 
     "Intake": [
         "intake", "admission", "admissions",
-        "seats", "sanctioned", "approved intake"
+        "seat", "sanctioned", "approved intake"
     ],
 
     "University Type": [
         "autonomous", "affiliation", "affiliated",
-        "university", "vtu", "visvesvaraya"
+        "university", "vtu", "accreditation"
     ],
 
     "Establishment Year": [
         "about", "history", "established",
-        "establishment", "founded", "inception"
+        "inception", "milestone", "founded"
     ],
 
     "Placement Overview": [
-        "placement", "placement statistics",
-        "placement report", "placed", "package",
-        "salary", "recruitment", "career"
+        "placement", "training", "career",
+        "recruiter", "placement statistics",
+        "placement report", "annual report"
     ],
 
     "Hiring Companies": [
-        "recruiter", "recruiters", "company",
-        "companies", "hiring", "placement"
+        "placement", "recruiter", "company",
+        "companies", "career", "training"
     ]
 }
 
@@ -508,7 +597,7 @@ RESULT_KEYWORDS = {
 
 
 # =====================================================
-# 9. SEARCH OFFICIAL COLLEGE WEBSITE
+# WEBSITE CRAWLER
 # =====================================================
 
 def score_link(label, url, keywords):
@@ -517,8 +606,8 @@ def score_link(label, url, keywords):
     ).lower().replace("-", " ").replace("_", " ")
 
     return sum(
-        1 for word in keywords
-        if word.lower() in combined
+        1 for keyword in keywords
+        if keyword.lower() in combined
     )
 
 
@@ -527,7 +616,6 @@ def scrape_college_site(website, topic):
         return [], ["Invalid official website URL."]
 
     visited = set()
-
     queue = [
         (website, "Official website homepage")
     ]
@@ -587,7 +675,10 @@ def scrape_college_site(website, topic):
             if link in visited:
                 continue
 
-            if not any(item[0] == link for item in queue):
+            if not any(
+                item[0] == link
+                for item in queue
+            ):
                 queue.append((
                     link,
                     f"Relevant page: {label or link}"
@@ -606,10 +697,10 @@ def scrape_college_site(website, topic):
 
 
 # =====================================================
-# 10. EXTRACT MATCHING INFORMATION
+# EXTRACT RELEVANT SENTENCES
 # =====================================================
 
-def extract_snippets(pages, keywords):
+def extract_snippets(pages, keywords, limit=8):
     results = []
 
     for page in pages:
@@ -629,8 +720,8 @@ def extract_snippets(pages, keywords):
                 continue
 
             if any(
-                word.lower() in sentence.lower()
-                for word in keywords
+                keyword.lower() in sentence.lower()
+                for keyword in keywords
             ):
 
                 if sentence not in matched:
@@ -639,7 +730,7 @@ def extract_snippets(pages, keywords):
         if matched:
             results.append((
                 page["url"],
-                matched[:8]
+                matched[:limit]
             ))
 
     return results
@@ -652,9 +743,9 @@ def render_results(pages, topic):
     )
 
     if not snippets:
-        st.warning(
-            "No matching information was found automatically. "
-            "Open the official source pages and check manually."
+        st.info(
+            "No matching information was detected automatically. "
+            "Open the source pages to check manually."
         )
 
     for url, sentences in snippets:
@@ -670,7 +761,7 @@ def render_results(pages, topic):
 
 
 # =====================================================
-# 11. UPLOAD EXCEL FILE
+# EXCEL UPLOAD
 # =====================================================
 
 uploaded_file = st.file_uploader(
@@ -681,24 +772,25 @@ uploaded_file = st.file_uploader(
 if uploaded_file is None:
 
     st.info(
-        "Upload your Excel workbook to explore colleges."
+        "Upload your Excel workbook to begin."
     )
 
     st.markdown("""
-    ### How to use
+    ### How to use this application
 
-    1. Upload your Excel file.
-    2. Select a district.
+    1. Upload your Excel workbook.
+    2. Filter colleges by district.
     3. Search and select a college.
-    4. Open the college website or Google Maps.
-    5. Fetch college information from the official website.
+    4. Open its official website or Google Maps.
+    5. Fetch information about departments, intake,
+       establishment year, placements and recruiters.
     """)
 
     st.stop()
 
 
 # =====================================================
-# 12. LOAD EXCEL WORKBOOK
+# READ EXCEL
 # =====================================================
 
 try:
@@ -718,12 +810,14 @@ try:
     df = df.dropna(how="all").copy()
 
 except Exception as error:
-    st.error(f"Could not read Excel file: {error}")
+    st.error(
+        f"Could not read the Excel file: {error}"
+    )
     st.stop()
 
 
 # =====================================================
-# 13. FIND COLUMN NAMES
+# DETECT EXCEL COLUMNS
 # =====================================================
 
 district_col = find_column(
@@ -805,7 +899,7 @@ phone_col = find_column(
 
 if not name_col:
     st.error(
-        "The Excel file must contain a College Name column."
+        "Could not find a College Name column in your workbook."
     )
 
     st.write("Available columns:", list(df.columns))
@@ -826,7 +920,7 @@ if df.empty:
 
 
 # =====================================================
-# 14. SIDEBAR FILTERS
+# SIDEBAR FILTERS
 # =====================================================
 
 districts = (
@@ -842,7 +936,7 @@ districts = (
 
 with st.sidebar:
 
-    st.header("🔍 Find a College")
+    st.header("🔎 Find a College")
 
     selected_district = st.selectbox(
         "Select District",
@@ -867,6 +961,7 @@ with st.sidebar:
     )
 
     if search_text:
+
         filtered_df = filtered_df[
             filtered_df[name_col].str.contains(
                 search_text,
@@ -878,7 +973,7 @@ with st.sidebar:
     college_options = filtered_df[name_col].tolist()
 
     if not college_options:
-        st.warning("No colleges match your search.")
+        st.warning("No colleges match your filters.")
         st.stop()
 
     selected_college = st.selectbox(
@@ -887,11 +982,14 @@ with st.sidebar:
     )
 
     st.divider()
-    st.caption(f"Workbook sheet: {sheet_name}")
+
+    st.caption(
+        f"Excel sheet: {sheet_name}"
+    )
 
 
 # =====================================================
-# 15. SELECTED COLLEGE DETAILS
+# SELECTED COLLEGE INFORMATION
 # =====================================================
 
 row = df[
@@ -906,8 +1004,7 @@ email = cell(row, email_col)
 phone = cell(row, phone_col)
 wiki_url = cell(row, wiki_col)
 
-# Correct Google Maps URL:
-# Ignore placeholder text from Excel.
+# FIXED MAPS URL: Never use placeholder text as a URL.
 maps_url = get_maps_url(
     row,
     maps_col,
@@ -917,17 +1014,24 @@ maps_url = get_maps_url(
 
 
 # =====================================================
-# 16. COLLEGE TITLE AND METRICS
+# COLLEGE TITLE
 # =====================================================
 
-st.subheader(f"🎓 {selected_college}")
+st.subheader(
+    f"🎓 {selected_college}"
+)
 
 st.caption(
     " • ".join(
-        item for item in [district, taluk]
-        if item
+        value for value in [district, taluk]
+        if value
     )
 )
+
+
+# =====================================================
+# DASHBOARD METRICS
+# =====================================================
 
 metric1, metric2, metric3 = st.columns(3)
 
@@ -938,7 +1042,7 @@ metric1.metric(
 
 metric2.metric(
     "Districts in workbook",
-    len(districts)
+    len(districts) if districts else "—"
 )
 
 metric3.metric(
@@ -949,7 +1053,7 @@ metric3.metric(
 
 
 # =====================================================
-# 17. DIRECTORY DETAILS AND QUICK LINKS
+# DIRECTORY DETAILS AND QUICK LINKS
 # =====================================================
 
 left, right = st.columns([2, 1])
@@ -983,7 +1087,6 @@ with left:
             use_container_width=True
         )
 
-    # This is always a real Google Maps URL.
     st.link_button(
         "📍 Open Google Maps",
         maps_url,
@@ -1004,27 +1107,37 @@ with right:
     st.markdown("### Quick Links")
 
     if valid_url(website):
-        st.markdown(
-            f"[🌐 College Website]({website})"
+
+        st.link_button(
+            "🌐 College Website",
+            website,
+            use_container_width=True
         )
 
-    st.markdown(
-        f"[📍 Google Maps]({maps_url})"
+    st.link_button(
+        "📍 Google Maps",
+        maps_url,
+        use_container_width=True
     )
 
     if valid_url(wiki_url):
-        st.markdown(
-            f"[📚 Wikipedia]({wiki_url})"
+
+        st.link_button(
+            "📚 Wikipedia",
+            wiki_url,
+            use_container_width=True
         )
 
 
 # =====================================================
-# 18. EXPLORE COLLEGE INFORMATION
+# EXPLORE COLLEGE INFORMATION
 # =====================================================
 
 st.divider()
 
-st.markdown("## 📚 Explore College Information")
+st.markdown(
+    "## 📚 Explore College Information"
+)
 
 topics = [
     "About Us",
@@ -1053,7 +1166,7 @@ for index, topic in enumerate(topics):
 
             st.session_state.active_topic = topic
 
-            # Clear previous results when changing college topics.
+            # Clear results from the previous topic/college.
             for key in [
                 "scraped_pages",
                 "scraped_warnings",
@@ -1065,23 +1178,25 @@ for index, topic in enumerate(topics):
 
 active_topic = st.session_state.active_topic
 
-st.markdown(f"### {active_topic}")
+st.markdown(
+    f"### {active_topic}"
+)
 
 st.caption(
-    "Fetches matching information from accessible pages "
-    "on the college's official website."
+    "The app searches accessible pages on the selected college's "
+    "official website. Verify the extracted details using the sources."
 )
 
 
 # =====================================================
-# 19. FETCH INFORMATION
+# FETCH COLLEGE WEBSITE INFORMATION
 # =====================================================
 
 if not valid_url(website):
 
     st.warning(
-        "No valid official website URL is available. "
-        "Add the college website to your Excel workbook."
+        "No valid official website URL is available for this college. "
+        "Add its official website to the Excel file."
     )
 
 else:
@@ -1093,7 +1208,7 @@ else:
     ):
 
         with st.spinner(
-            f"Searching the website for {active_topic}..."
+            "Reading the college website and relevant pages..."
         ):
 
             pages, warnings = scrape_college_site(
@@ -1106,7 +1221,6 @@ else:
         st.session_state.scraped_college = selected_college
         st.session_state.scraped_topic = active_topic
 
-    # Show results only for the currently selected college and topic.
     if (
         st.session_state.get("scraped_college")
         == selected_college
@@ -1136,7 +1250,7 @@ else:
         else:
 
             st.success(
-                f"Read {len(pages)} page(s) successfully."
+                f"Read {len(pages)} page(s)."
             )
 
             render_results(
@@ -1144,7 +1258,7 @@ else:
                 active_topic
             )
 
-            # Establishment year
+            # Establishment year references
             if active_topic == "Establishment Year":
 
                 combined_text = " ".join(
@@ -1161,15 +1275,14 @@ else:
                 if years:
 
                     st.markdown(
-                        "**Year references found:**"
+                        "**Year references found on fetched pages:**"
                     )
 
                     st.write(", ".join(years))
 
                     st.caption(
-                        "These are references to years on the "
-                        "website, not confirmed establishment years. "
-                        "Verify the college's official history."
+                        "These are year references, not confirmed "
+                        "establishment years. Verify the official history."
                     )
 
                 else:
@@ -1199,14 +1312,16 @@ else:
                         "**Placement year references detected:**"
                     )
 
-                    st.write(", ".join(years[-12:]))
+                    st.write(
+                        ", ".join(years[-12:])
+                    )
 
                 st.caption(
                     "Placement figures and recruiter lists should "
-                    "be verified against official placement reports."
+                    "be verified using official placement reports."
                 )
 
-            # Show all sources
+            # Source pages
             with st.expander("🔗 View all source pages"):
 
                 for page in pages:
@@ -1215,23 +1330,24 @@ else:
                         f"- [{page['reason']}]({page['url']})"
                     )
 
+            # Failed pages
             if warnings:
 
-                with st.expander(
-                    "⚠️ Pages that could not be read"
-                ):
+                with st.expander("⚠️ Pages that could not be read"):
 
                     for warning in warnings:
                         st.write("•", warning)
 
 
 # =====================================================
-# 20. COMPLETE EXCEL DATA TABLE
+# COMPLETE COLLEGE DATA
 # =====================================================
 
 st.divider()
 
-st.markdown("## 📊 Complete College Data")
+st.markdown(
+    "## 📊 Complete College Data"
+)
 
 st.dataframe(
     df,
@@ -1252,7 +1368,7 @@ st.download_button(
 )
 
 st.caption(
-    "College directory information comes from your uploaded "
-    "Excel workbook. Website extraction is automatic and may "
-    "not retrieve every detail."
+    "Directory details come from the uploaded Excel file. "
+    "Website extraction may miss information when sites block "
+    "automated requests or require JavaScript."
 )
